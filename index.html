@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Fire Elite - Premium Gaming Store</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-container">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Initializing Gaming Portal...</div>
+            <div class="loading-progress">
+                <div class="loading-progress-bar" id="loadingProgress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <!-- Audio Elements -->
+    <audio id="hoverSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvGMcAzqM0vPUgC4GJXjK8t2QQAoUXrTp66hVFApGn+DyvGMcAzqM0vPUgC4G" type="audio/wav">
+    </audio>
+    <audio id="clickSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvGMcAzqM0vPUgC4GJXjK8t2QQAoUXrTp66hVFApGn+DyvGMcAzqM0vPUgC4G" type="audio/wav">
+    </audio>
+
+    <!-- Navigation -->
+    <nav class="nav" id="navigation">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-logo" data-aos="fade-right">
+                    <i class="fas fa-fire"></i>
+                    <span>FREE FIRE ELITE</span>
+                </div>
+                
+                <div class="nav-menu">
+                    <a href="#home" class="nav-link" data-aos="fade-down" data-aos-delay="100">Home</a>
+                    <a href="#accounts" class="nav-link" data-aos="fade-down" data-aos-delay="200">Accounts</a>
+                    <a href="#features" class="nav-link" data-aos="fade-down" data-aos-delay="300">Features</a>
+                    <a href="#testimonials" class="nav-link" data-aos="fade-down" data-aos-delay="400">Reviews</a>
+                    <a href="#contact" class="nav-link" data-aos="fade-down" data-aos-delay="500">Contact</a>
+                </div>
+
+                <div class="nav-actions" data-aos="fade-left">
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Search accounts..." class="search-input">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                    <div class="cart-container" id="cartContainer">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+
+                <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 data-aos="fade-up" data-aos-duration="1000">
+                    <span class="hero-title-line">Premium</span>
+                    <span class="hero-title-line glow-text">Free Fire</span>
+                    <span class="hero-title-line">Accounts</span>
+                </h1>
+                <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+                    Unlock the ultimate gaming experience with our elite collection of premium Free Fire accounts. 
+                    High-level characters, rare skins, and exclusive items await you.
+                </p>
+                
+                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="600">
+                    <button class="btn btn-primary pulse-effect" onclick="scrollToSection('#accounts')">
+                        <i class="fas fa-rocket"></i>
+                        Explore Accounts
+                    </button>
+                    <button class="btn btn-secondary glass-effect" onclick="openModal('demoModal')">
+                        <i class="fas fa-play"></i>
+                        Watch Demo
+                    </button>
+                </div>
+
+                <div class="hero-stats" data-aos="fade-up" data-aos-delay="900">
+                    <div class="hero-stat">
+                        <span class="hero-stat-number counter" data-target="10000">0</span>
+                        <span class="hero-stat-label">Happy Gamers</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number counter" data-target="500">0</span>
+                        <span class="hero-stat-label">Premium Accounts</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number counter" data-target="99">0</span>
+                        <span class="hero-stat-label">Success Rate %</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-icon" data-aos="fade-in" data-aos-delay="1200">
+                <i class="fas fa-crown"></i>
+            </div>
+            <div class="floating-icon" data-aos="fade-in" data-aos-delay="1400">
+                <i class="fas fa-gem"></i>
+            </div>
+            <div class="floating-icon" data-aos="fade-in" data-aos-delay="1600">
+                <i class="fas fa-trophy"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Why Choose Elite Accounts</h2>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>100% Secure</h3>
+                    <p>All accounts are verified and guaranteed safe with our advanced security protocols.</p>
+                </div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Instant Delivery</h3>
+                    <p>Get your premium account details instantly after successful payment verification.</p>
+                </div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Our dedicated support team is available round the clock to assist you.</p>
+                </div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Premium Quality</h3>
+                    <p>Hand-picked accounts with rare skins, high levels, and exclusive items.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accounts Section -->
+    <section class="accounts-section" id="accounts">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Premium Account Collection</h2>
+                <div class="filters-container">
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all">All Accounts</button>
+                        <button class="filter-tab" data-filter="legendary">Legendary</button>
+                        <button class="filter-tab" data-filter="epic">Epic</button>
+                        <button class="filter-tab" data-filter="rare">Rare</button>
+                    </div>
+                    <div class="sort-container">
+                        <select id="sortSelect" class="sort-select">
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="level-high">Level: High to Low</option>
+                            <option value="popularity">Most Popular</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accounts-grid" id="accountsGrid">
+                <!-- Account Card 1 -->
+                <div class="account-card" data-category="legendary" data-price="299" data-level="80" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Elite Gaming Account" class="account-image">
+                        <div class="image-overlay"></div>
+                        <div class="discount-badge">-40%</div>
+                        <div class="rarity-badge legendary">LEGENDARY</div>
+                        <div class="quick-view-btn" onclick="openQuickView(1)">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <div class="account-header">
+                            <h3 class="account-title">Elite Grandmaster Account</h3>
+                            <div class="account-level">
+                                <i class="fas fa-star"></i>
+                                Level 80
+                            </div>
+                        </div>
+
+                        <div class="account-features">
+                            <div class="feature-item">
+                                <i class="fas fa-fire feature-icon"></i>
+                                <span>Legendary Skins Collection</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-crown feature-icon"></i>
+                                <span>Grandmaster Rank</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-gem feature-icon"></i>
+                                <span>50,000+ Diamonds</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-trophy feature-icon"></i>
+                                <span>Exclusive Emotes</span>
+                            </div>
+                        </div>
+
+                        <div class="pricing">
+                            <span class="current-price">$299</span>
+                            <span class="original-price">$499</span>
+                            <span class="savings">Save $200</span>
+                        </div>
+
+                        <div class="card-actions">
+                            <button class="btn btn-primary add-to-cart" onclick="addToCart(1)">
+                                <i class="fas fa-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn btn-secondary quick-buy" onclick="quickBuy(1)">
+                                <i class="fas fa-bolt"></i>
+                                Quick Buy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account Card 2 -->
+                <div class="account-card" data-category="epic" data-price="199" data-level="65" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Pro Gaming Account" class="account-image">
+                        <div class="image-overlay"></div>
+                        <div class="discount-badge">-30%</div>
+                        <div class="rarity-badge epic">EPIC</div>
+                        <div class="quick-view-btn" onclick="openQuickView(2)">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <div class="account-header">
+                            <h3 class="account-title">Pro Diamond Account</h3>
+                            <div class="account-level">
+                                <i class="fas fa-star"></i>
+                                Level 65
+                            </div>
+                        </div>
+
+                        <div class="account-features">
+                            <div class="feature-item">
+                                <i class="fas fa-fire feature-icon"></i>
+                                <span>Epic Skins Bundle</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-medal feature-icon"></i>
+                                <span>Diamond Rank</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-gem feature-icon"></i>
+                                <span>25,000+ Diamonds</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-magic feature-icon"></i>
+                                <span>Rare Characters</span>
+                            </div>
+                        </div>
+
+                        <div class="pricing">
+                            <span class="current-price">$199</span>
+                            <span class="original-price">$299</span>
+                            <span class="savings">Save $100</span>
+                        </div>
+
+                        <div class="card-actions">
+                            <button class="btn btn-primary add-to-cart" onclick="addToCart(2)">
+                                <i class="fas fa-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn btn-secondary quick-buy" onclick="quickBuy(2)">
+                                <i class="fas fa-bolt"></i>
+                                Quick Buy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account Card 3 -->
+                <div class="account-card" data-category="rare" data-price="99" data-level="45" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Advanced Gaming Account" class="account-image">
+                        <div class="image-overlay"></div>
+                        <div class="discount-badge">-25%</div>
+                        <div class="rarity-badge rare">RARE</div>
+                        <div class="quick-view-btn" onclick="openQuickView(3)">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <div class="account-header">
+                            <h3 class="account-title">Advanced Platinum Account</h3>
+                            <div class="account-level">
+                                <i class="fas fa-star"></i>
+                                Level 45
+                            </div>
+                        </div>
+
+                        <div class="account-features">
+                            <div class="feature-item">
+                                <i class="fas fa-fire feature-icon"></i>
+                                <span>Rare Skins Collection</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-award feature-icon"></i>
+                                <span>Platinum Rank</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-gem feature-icon"></i>
+                                <span>10,000+ Diamonds</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-user-ninja feature-icon"></i>
+                                <span>Special Characters</span>
+                            </div>
+                        </div>
+
+                        <div class="pricing">
+                            <span class="current-price">$99</span>
+                            <span class="original-price">$149</span>
+                            <span class="savings">Save $50</span>
+                        </div>
+
+                        <div class="card-actions">
+                            <button class="btn btn-primary add-to-cart" onclick="addToCart(3)">
+                                <i class="fas fa-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn btn-secondary quick-buy" onclick="quickBuy(3)">
+                                <i class="fas fa-bolt"></i>
+                                Quick Buy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account Card 4 -->
+                <div class="account-card" data-category="epic" data-price="249" data-level="72" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="card-image-container">
+                        <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
+                             alt="Master Gaming Account" class="account-image">
+                        <div class="image-overlay"></div>
+                        <div class="discount-badge">-35%</div>
+                        <div class="rarity-badge epic">EPIC</div>
+                        <div class="quick-view-btn" onclick="openQuickView(4)">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <div class="account-header">
+                            <h3 class="account-title">Master Elite Account</h3>
+                            <div class="account-level">
+                                <i class="fas fa-star"></i>
+                                Level 72
+                            </div>
+                        </div>
+
+                        <div class="account-features">
+                            <div class="feature-item">
+                                <i class="fas fa-fire feature-icon"></i>
+                                <span>Epic Weapon Skins</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-crown feature-icon"></i>
+                                <span>Master Rank</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-gem feature-icon"></i>
+                                <span>35,000+ Diamonds</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-rocket feature-icon"></i>
+                                <span>Legendary Vehicles</span>
+                            </div>
+                        </div>
+
+                        <div class="pricing">
+                            <span class="current-price">$249</span>
+                            <span class="original-price">$399</span>
+                            <span class="savings">Save $150</span>
+                        </div>
+
+                        <div class="card-actions">
+                            <button class="btn btn-primary add-to-cart" onclick="addToCart(4)">
+                                <i class="fas fa-shopping-cart"></i>
+                                Add to Cart
+                            </button>
+                            <button class="btn btn-secondary quick-buy" onclick="quickBuy(4)">
+                                <i class="fas fa-bolt"></i>
+                                Quick Buy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="load-more-container" data-aos="fade-up">
+                <button class="btn btn-outline load-more-btn" id="loadMoreBtn">
+                    <i class="fas fa-plus"></i>
+                    Load More Accounts
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonials" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">What Gamers Say</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial-card active" data-aos="fade-in">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Amazing account quality! Got exactly what was promised. The diamond count was accurate and all skins were intact. Highly recommended!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Alex Gaming</h4>
+                                <span>Pro Player</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-aos="fade-in" data-aos-delay="200">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Instant delivery and great customer service! The account exceeded my expectations with rare skins I never thought I'd own."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Sarah Elite</h4>
+                                <span>Content Creator</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-aos="fade-in" data-aos-delay="400">
+                    <div class="testimonial-content">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Best investment for my gaming journey! The account quality is premium and the support team is incredibly helpful."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Mike Champion</h4>
+                                <span>Tournament Winner</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-controls">
+                <button class="testimonial-btn prev" onclick="changeTestimonial(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="testimonial-dots">
+                    <span class="dot active" onclick="currentTestimonial(1)"></span>
+                    <span class="dot" onclick="currentTestimonial(2)"></span>
+                    <span class="dot" onclick="currentTestimonial(3)"></span>
+                </div>
+                <button class="testimonial-btn next" onclick="changeTestimonial(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section" data-aos="fade-up">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h3>Stay Updated with Elite Offers</h3>
+                    <p>Get exclusive deals, new account alerts, and gaming tips delivered to your inbox.</p>
+                </div>
+                <div class="newsletter-form">
+                    <form id="newsletterForm">
+                        <div class="input-group">
+                            <input type="email" placeholder="Enter your email" required>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i>
+                                Subscribe
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-fire"></i>
+                        <span>FREE FIRE ELITE</span>
+                    </div>
+                    <p>Your ultimate destination for premium Free Fire accounts. Join thousands of satisfied gamers worldwide.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#accounts">Accounts</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>support@freefirelite.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>24/7 Live Support</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>100% Secure</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Free Fire Elite. All rights reserved.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-paypal"></i>
+                    <i class="fab fa-bitcoin"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Shopping Cart</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be populated by JavaScript -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total: $<span id="cartTotal">0</span></span>
+            </div>
+            <button class="btn btn-primary checkout-btn" onclick="checkout()">
+                <i class="fas fa-credit-card"></i>
+                Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+    <!-- Quick View Modal -->
+    <div class="modal" id="quickViewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Account Details</h3>
+                <button class="modal-close" onclick="closeModal('quickViewModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="quickViewContent">
+                <!-- Quick view content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Demo Modal -->
+    <div class="modal" id="demoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Account Preview Demo</h3>
+                <button class="modal-close" onclick="closeModal('demoModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="demo-content">
+                    <p>Watch how our premium accounts work in-game:</p>
+                    <div class="demo-video-placeholder">
+                        <i class="fas fa-play-circle"></i>
+                        <span>Demo Video</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-toggle" onclick="toggleChat()">
+            <i class="fas fa-comments"></i>
+            <span class="chat-notification" id="chatNotification">1</span>
+        </div>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <span>Live Support</span>
+                <button onclick="toggleChat()"><i class="fas fa-minus"></i></button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message bot">
+                    <span>Hello! How can I help you today?</span>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type your message..." id="chatInput">
+                <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
+        <i class="fas fa-rocket"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
